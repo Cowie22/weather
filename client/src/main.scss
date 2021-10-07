@@ -1,1 +1,242 @@
+@charset "UTF-8";
+
+$blue: #55C5D7;
+$green: #6B8A16;
+$grey: #494949;
+$logo-grey: #464C3E;
+$black: #000000;
+$white: #FFFFFF;
+
+$teal: #259591;
+$light-teal: #3CDBC0;
+$dark-teal: #387F97;
+$light-green: #79D97C;
+$dark-green: #4A6A1D;
+$gold: #FFCD00;
+
+$montserrat: 'Montserrat', sans-serif;
+
+
+@import "~bootstrap/scss/bootstrap";
 @import "./components/App.scss";
+
+
+html {
+  font-size: 50%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $montserrat;
+  font-size: 2rem;
+  margin: 0;
+  color: #333333;
+  &.scroll-none {
+    overflow: hidden;
+  }
+  &.isi-expanded {
+    overflow: hidden;
+  }
+  &.modal-hidden {
+    overflow: hidden;
+  }
+  &.exit-ramp-opened {
+    overflow: hidden;
+  }
+}
+
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+  &:visited {
+    text-decoration: none;
+    outline: none;
+  }
+}
+
+// Text Styles
+
+h1 {
+  font-family: $montserrat;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 60px;
+  color: #333333;
+  margin: 0;
+  @media screen and (max-width: 991px) {
+    font-size: 36px;
+    line-height: 42px;
+  }
+}
+
+h2 {
+  font-family: $montserrat;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 44px;
+  line-height: 48px;
+  color: #333333;
+  margin: 0;
+  @media screen and (max-width: 991px) {
+    font-size: 30px;
+    line-height: 40px;
+  }
+}
+
+h3 {
+  font-family: $montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 36px;
+  color: #333333;
+  margin: 0;
+  @media screen and (max-width: 991px) {
+    font-size: 24px;
+    line-height: 28px;
+  }
+}
+
+h4 {
+  font-family: $montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  color: #333333;
+  margin: 0;
+  @media screen and (max-width: 991px) {
+    font-size: 20px;
+    line-height: 24px;
+  }
+}
+
+h5 {
+  font-family: $montserrat;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #333333;
+  margin: 0;
+  @media screen and (max-width: 991px) {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+
+h6 {
+  font-family: $montserrat;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: #333333;
+  margin: 0;
+}
+
+p {
+  font-family: $montserrat;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #333333;
+  margin: 0;
+}
+
+// Convenient Class Names
+
+.normal-weight {
+  font-weight: 400;
+}
+
+.bold {
+  font-weight: 500;
+}
+
+.extra-bold {
+  font-weight: 700;
+}
+
+.blue {
+  color: $blue;
+}
+
+.green {
+  color: $green;
+}
+
+.grey {
+  color: $grey;
+}
+
+.logo-grey {
+  color: $logo-grey;
+}
+
+.black {
+  color: $black;
+}
+
+.white {
+  color: $white;
+}
+
+.teal {
+  color: $teal;
+}
+
+.light-teal {
+  color: $light-teal;
+}
+
+.dark-teal {
+  color: $dark-teal;
+}
+
+.light-green {
+  color: $light-green;
+}
+
+.dark-green {
+  color: $dark-green;
+}
+
+.gold {
+  color: $gold;
+}
+
+// BTN Styles
+
+.cta-btn {
+  color: $white;
+  border: 1px solid $white;
+  padding: 8px 0px;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-height: fit-content;
+  text-align: center;
+  border-radius: 6px;
+  font-family: $montserrat;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  transition: all .7s;
+  transition-delay: .1s;
+  outline: none!important;
+  &:hover {
+    cursor: pointer;
+    transition: all .7s;
+    transition-delay: .1s;
+    outline: none;
+  }
+  &:visited {
+    text-decoration: none;
+    outline: none;
+  }
+}
