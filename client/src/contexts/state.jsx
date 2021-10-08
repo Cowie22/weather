@@ -12,7 +12,10 @@ const defaultState = {
   weatherData: [],
   currentCity: '',
   cities: [],
+  lastCity: {},
+  dataCollectedFirstTime: false,
   getWeatherData: () => {},
+  getWeatherDataFirstTime: () => {},
   getCity: () => {},
   addCity: () => {},
 }
@@ -36,6 +39,8 @@ class AppProvider extends Component {
       weatherData: [],
       currentCity: '',
       cities: [],
+      lastCity: {},
+      dataCollectedFirstTime: false,
       getWeatherData: (lat, long) => {
         console.log('started', lat, long)
         Axios.get(`/weather/${lat}/${long}`)
@@ -58,12 +63,35 @@ class AppProvider extends Component {
             alert('PLEASE INSERT PROPER LATITUDE AND LONGITUDE')
           });
       },
+      getWeatherDataFirstTime: (lat, long) => {
+        console.log('started', lat, long)
+        Axios.get(`/weather/${lat}/${long}`)
+          .then(res => {
+            this.setState({
+              weatherData: res.data,
+              currentCity: res.data.title,
+              dataCollectedFirstTime: true,
+            })
+          })
+          .catch(err => {
+            console.log('ERROR', err)
+            alert('PLEASE INSERT PROPER LATITUDE AND LONGITUDE')
+          });
+      },
       getCity: () => {
         Axios.get(`/city`)
           .then(res => {
             this.setState({
               cities: res.data,
+              lastCity: res.data[0],
             })
+          })
+          .then(() => {
+            if (!this.state.dataCollectedFirstTime) {
+              const { latitude, longitude} = this.state.lastCity;
+              this.state.getWeatherDataFirstTime(latitude, longitude);
+            }
+            return
           })
           .catch(err => {
             console.log('ERROR', err)

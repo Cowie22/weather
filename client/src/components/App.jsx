@@ -45,7 +45,7 @@ const App = (props) => {
           <Display />
         :
         <div>
-          
+
         </div>
       }
     </>
