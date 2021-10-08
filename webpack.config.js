@@ -32,7 +32,6 @@ module.exports = {
 					options: {
 						plugins: function () {
 							return [ 
-                require('precss'),
                 require('autoprefixer')
               ]
 						}
