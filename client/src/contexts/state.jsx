@@ -11,7 +11,7 @@ const defaultState = {
   currentLong: '',
   handleLatLongChange: () => {},
   handleDropdownLongLat: () => {},
-  handleGetLngLat: () => {},
+  handleLongLatFromMap: () => {},
   weatherData: [],
   currentCity: '',
   cities: [],
@@ -46,11 +46,13 @@ class AppProvider extends Component {
           currentLong: long,
         })
       },
-      handleGetLngLat: (event) => {
+      handleLongLatFromMap: (event) => {
         this.setState({
-          currentLong: event.lng.toFixed(4),
           currentLat: event.lat.toFixed(4),
+          currentLong: event.lng.toFixed(4),
           // mapClicked: true,
+        }, () => {
+          this.state.getWeatherData(this.state.currentLat, this.state.currentLong)
         });
       },
       weatherData: [],

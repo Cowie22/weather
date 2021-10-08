@@ -8,6 +8,7 @@ import { AppContext } from '../contexts/state'
 
 import Navigation from './Navigation/Navigation'
 import Display from './Display/Display'
+import Map from './Map/Map'
 
 const App = (props) => {
   const state = useContext(AppContext);
@@ -48,6 +49,7 @@ const App = (props) => {
           </div>
         }
       </section>
+      <Map />
     </>
     :
     <div>
