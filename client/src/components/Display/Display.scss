@@ -1,10 +1,12 @@
 
 .display-container {
   background: linear-gradient(286.74deg, #3CDBC0 0%, #387F97 100%);
-  padding: 80px 0;
+  padding: 40px 0;
+  min-height: 388px;
+  transition: 0.8s all;
   .inner-weather-container {
-    h1 {
-      padding-bottom: 80px;
+    h2 {
+      padding-bottom: 20px;
     }
     .forecast-container {
       width: 100%;

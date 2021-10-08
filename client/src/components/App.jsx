@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import '../main.scss';
+import { hot } from 'react-hot-loader/root';
 import axios from 'axios';
 import { Container, Row, Col } from 'react-bootstrap'
 
@@ -22,9 +23,6 @@ const App = (props) => {
   useEffect(() => {
     getCity();
   }, [])
-  console.log('DATA', weatherData)
-  console.log('currentCity', currentCity)
-  console.log('cities', cities)
   return (
     cities.length > 0 ?
     <>
@@ -40,14 +38,16 @@ const App = (props) => {
         </Container>
       </section>
       <Navigation />
-      {
-        weatherData.consolidated_weather ?
-          <Display />
-        :
-        <div>
+      <section className='display-container'>
+        {
+          weatherData.consolidated_weather ?
+            <Display />
+          :
+          <div>
 
-        </div>
-      }
+          </div>
+        }
+      </section>
     </>
     :
     <div>
@@ -56,4 +56,4 @@ const App = (props) => {
   )
 }
 
-export default App
+export default hot(App)

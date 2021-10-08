@@ -7,8 +7,11 @@ import React, { Component } from "react"
 // Hence why AppContext is exported as well as the class component below.
 
 const defaultState = {
-  isCookieVisible: true,
-  handleIsCookieVisible: () => {},
+  currentLat: '',
+  currentLong: '',
+  handleLatLongChange: () => {},
+  handleDropdownLongLat: () => {},
+  handleGetLngLat: () => {},
   weatherData: [],
   currentCity: '',
   cities: [],
@@ -30,11 +33,25 @@ class AppProvider extends Component {
     // I have seen that many engineers indent the function, directly below the state or states that
     // That particular function is responsible for updating.
     this.state = {
-      isCookieVisible: true,
-      handleIsCookieVisible: (val) => {
+      currentLat: '',
+      currentLong: '',
+      handleLatLongChange: (event) => {
+        let newState = {};
+        newState[event.target.name] = event.target.value,
+        this.setState(newState);
+      },
+      handleDropdownLongLat: (lat, long) => {
         this.setState({
-          isCookieVisible: val,
+          currentLat: lat,
+          currentLong: long,
         })
+      },
+      handleGetLngLat: (event) => {
+        this.setState({
+          currentLong: event.lng.toFixed(4),
+          currentLat: event.lat.toFixed(4),
+          // mapClicked: true,
+        });
       },
       weatherData: [],
       currentCity: '',
@@ -42,7 +59,6 @@ class AppProvider extends Component {
       lastCity: {},
       dataCollectedFirstTime: false,
       getWeatherData: (lat, long) => {
-        console.log('started', lat, long)
         Axios.get(`/weather/${lat}/${long}`)
           .then(res => {
             this.setState({
@@ -64,7 +80,6 @@ class AppProvider extends Component {
           });
       },
       getWeatherDataFirstTime: (lat, long) => {
-        console.log('started', lat, long)
         Axios.get(`/weather/${lat}/${long}`)
           .then(res => {
             this.setState({

@@ -17,11 +17,19 @@
       border-radius: 10px;
     }
     .dropdown-container {
-      padding: 20px 0;
       width: 100%;
       select {
         width: 100%;
         padding: 8px 24px;
+        background: #FFFFFF;
+        border: none;
+        outline: none;
+        font-family: $montserrat;
+        font-weight: normal;
+        font-size: 22px;
+        line-height: 28px;
+        color: #494949;
+        border-radius: 10px;
       }
     }
   }

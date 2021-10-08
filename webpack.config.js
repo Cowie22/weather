@@ -45,7 +45,10 @@ module.exports = {
     // new webpack.HotModuleReplacementPlugin(),
   ],
   devServer: {
+    port: 2222,
+    open: true,
+    compress: true,
     contentBase: './public',
-    // hot: true,
+    hot: true,
   },
 };

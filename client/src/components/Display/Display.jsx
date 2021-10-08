@@ -81,31 +81,29 @@ const Display = (props) => {
   });
 
   return (
-    <section class='display-container'>
-      <Container>
-        <Row>
-          <Col lg={{span: 12, offset: 0}}>
-            <Row>
-              <Fade
-              // Animation for smoother forecast display transition
-                down
-                duration={2000}
-                distance={'800px'}
-              >
-                <div className='inner-weather-container'>
-                  <h1 className='gold text-center'>
-                    {weatherData.title}
-                  </h1>
-                  <div className='forecast-container'>
-                    {forecastData}
-                  </div>
+    <Container>
+      <Row>
+        <Col lg={{span: 12, offset: 0}}>
+          <Row>
+            <Fade
+            // Animation for smoother forecast display transition
+              down
+              duration={2000}
+              distance={'800px'}
+            >
+              <div className='inner-weather-container'>
+                <h2 className='gold text-center'>
+                  {weatherData.title}
+                </h2>
+                <div className='forecast-container'>
+                  {forecastData}
                 </div>
-              </Fade>
-            </Row>
-          </Col>
-        </Row>
-      </Container>
-    </section>
+              </div>
+            </Fade>
+          </Row>
+        </Col>
+      </Row>
+    </Container>
   )
 }
 
