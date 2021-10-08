@@ -1,38 +1,58 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import '../main.scss';
 import axios from 'axios';
 import { Container, Row, Col } from 'react-bootstrap'
 
 import { AppContext } from '../contexts/state'
 
+import Navigation from './Navigation/Navigation'
+import Display from './Display/Display'
+
 const App = (props) => {
   const state = useContext(AppContext);
   const {
-    isCookieVisible,
-    handleIsCookieVisible
+    weatherData,
+    currentCity,
+    cities,
+    getWeatherData,
+    getCity,
+    addCity,
   } = state;
-  return (
-    <section className='app-container'>
-      <Container>
-        <Row>
-          <Col lg={{span: 10, offset: 1}}>
-            <h1 className='gold' onClick={() => handleIsCookieVisible(!isCookieVisible)}>
-              HELLO WORLD
-            </h1>
-            {
-              isCookieVisible ?
-                <h2 className='gold'>
-                  HELLO HIDDEN WORLD
-                </h2>
-              :
-                <div>
 
-                </div>
-            }
-          </Col>
-        </Row>
-      </Container>
-    </section>
+  useEffect(() => {
+    getCity();
+  }, [])
+  console.log('DATA', weatherData)
+  console.log('currentCity', currentCity)
+  console.log('cities', cities)
+  return (
+    cities.length > 0 ?
+    <>
+      <section className='app-container'>
+        <Container>
+          <Row>
+            <Col lg={{span: 10, offset: 1}}>
+              <h1 className='gold text-center'>
+                Weather App
+              </h1>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+      <Navigation />
+      {
+        weatherData.consolidated_weather ?
+          <Display />
+        :
+        <div>
+          
+        </div>
+      }
+    </>
+    :
+    <div>
+      ...LOADING
+    </div>
   )
 }
 

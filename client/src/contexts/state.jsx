@@ -1,3 +1,4 @@
+import Axios from "axios"
 import React, { Component } from "react"
 
 // This is the main function that allows contexts to work and is built in to react.
@@ -8,6 +9,12 @@ import React, { Component } from "react"
 const defaultState = {
   isCookieVisible: true,
   handleIsCookieVisible: () => {},
+  weatherData: [],
+  currentCity: '',
+  cities: [],
+  getWeatherData: () => {},
+  getCity: () => {},
+  addCity: () => {},
 }
 
 export const AppContext = React.createContext(defaultState)
@@ -26,6 +33,49 @@ class AppProvider extends Component {
           isCookieVisible: val,
         })
       },
+      weatherData: [],
+      currentCity: '',
+      cities: [],
+      getWeatherData: (lat, long) => {
+        console.log('started', lat, long)
+        Axios.get(`/weather/${lat}/${long}`)
+          .then(res => {
+            this.setState({
+              weatherData: res.data,
+              currentCity: res.data.title,
+            })
+          })
+          .then(() => {
+            let info = {
+              postLat: lat,
+              postLong: long,
+              postCity: this.state.currentCity,
+            };
+            this.state.addCity(info);
+          })
+          .catch(err => {
+            console.log('ERROR', err)
+            alert('PLEASE INSERT PROPER LATITUDE AND LONGITUDE')
+          });
+      },
+      getCity: () => {
+        Axios.get(`/city`)
+          .then(res => {
+            this.setState({
+              cities: res.data,
+            })
+          })
+          .catch(err => {
+            console.log('ERROR', err)
+          });
+      },
+      addCity: (info) => {
+        Axios.post(`/city`, info)
+          .then(this.state.getCity())
+          .catch(err => {
+            console.log('ERROR', err)
+          });
+      }
     }
   }
   render() {

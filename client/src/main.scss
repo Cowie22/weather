@@ -19,10 +19,11 @@ $montserrat: 'Montserrat', sans-serif;
 
 @import "~bootstrap/scss/bootstrap";
 @import "./components/App.scss";
+@import "./components/Navigation/Navigation.scss";
+@import "./components/Display/Display.scss";
 
 
 html {
-  font-size: 50%;
   scroll-behavior: smooth;
 }
 
@@ -224,8 +225,8 @@ p {
   border-radius: 6px;
   font-family: $montserrat;
   font-weight: 700;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 28px;
+  line-height: 34px;
   transition: all .7s;
   transition-delay: .1s;
   outline: none!important;
@@ -238,5 +239,25 @@ p {
   &:visited {
     text-decoration: none;
     outline: none;
+  }
+}
+
+.transparent-btn-green {
+  background: transparent;
+  border: 1px solid $green;
+  color: $green;
+  &:hover {
+    background: $green;
+    color: $white;
+  }
+}
+
+.gold-btn {
+  background: $gold;
+  border: 1px solid $gold;
+  &:hover {
+    color: $gold;
+    background: #FFFFFF;
+    border: 1px solid $gold;
   }
 }

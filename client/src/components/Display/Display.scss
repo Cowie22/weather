@@ -1,0 +1,47 @@
+
+.display-container {
+  background: linear-gradient(286.74deg, #3CDBC0 0%, #387F97 100%);
+  padding: 80px 0;
+  .inner-weather-container {
+    h1 {
+      padding-bottom: 80px;
+    }
+    .forecast-container {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      .forecast-col {
+        padding: 0 10px;
+        width: 20.83333%;
+        .inner-forecast-container {
+          border-radius: 50%;
+          width: 100%;
+          height: auto;
+          .day-container {
+            h4 {
+              padding: 8px 0;
+            }
+          }
+          .temp-container {
+            p {
+              text-align: right;
+            }
+          }
+          .misc-weather-container {
+            p {
+              text-align: left;
+            }
+          }
+          .weather-logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+              width: 40%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
