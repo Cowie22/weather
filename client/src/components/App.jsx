@@ -1,14 +1,14 @@
-import React, { useContext, useState, useEffect } from 'react';
-import '../main.scss';
-import { hot } from 'react-hot-loader/root';
-import axios from 'axios';
-import { Container, Row, Col } from 'react-bootstrap'
+import React, { useContext, useState, useEffect } from "react";
+import "../main.scss";
+import { hot } from "react-hot-loader/root";
+import axios from "axios";
+import { Container, Row, Col } from "react-bootstrap";
 
-import { AppContext } from '../contexts/state'
+import { AppContext } from "../contexts/state";
 
-import Navigation from './Navigation/Navigation'
-import Display from './Display/Display'
-import Map from './Map/Map'
+import Navigation from "./Navigation/Navigation";
+import Display from "./Display/Display";
+import Map from "./Map/Map";
 
 const App = (props) => {
   const state = useContext(AppContext);
@@ -23,39 +23,27 @@ const App = (props) => {
 
   useEffect(() => {
     getCity();
-  }, [])
-  return (
-    cities.length > 0 ?
+  }, []);
+  return cities.length > 0 ? (
     <>
-      <section className='app-container'>
+      <section className="app-container">
         <Container>
           <Row>
-            <Col lg={{span: 10, offset: 1}}>
-              <h1 className='gold text-center'>
-                Weather App
-              </h1>
+            <Col lg={{ span: 10, offset: 1 }}>
+              <h1 className="gold text-center">Weather App</h1>
             </Col>
           </Row>
         </Container>
       </section>
       <Navigation />
-      <section className='display-container'>
-        {
-          weatherData.consolidated_weather ?
-            <Display />
-          :
-          <div>
-
-          </div>
-        }
+      <section className="display-container">
+        {weatherData.consolidated_weather ? <Display /> : <div></div>}
       </section>
       <Map />
     </>
-    :
-    <div>
-      ...LOADING
-    </div>
-  )
-}
+  ) : (
+    <div>...LOADING</div>
+  );
+};
 
-export default hot(App)
+export default hot(App);

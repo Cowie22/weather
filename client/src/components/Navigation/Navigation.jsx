@@ -1,9 +1,8 @@
-
 import React, { useContext, useState } from "react";
 import axios from "axios";
 import { Container, Row, Col } from "react-bootstrap";
 
-import { AppContext } from '../../contexts/state'
+import { AppContext } from "../../contexts/state";
 
 const Navigation = (props) => {
   const [city, handleCity] = useState("RECENTLY SEARCHED");
@@ -26,23 +25,19 @@ const Navigation = (props) => {
     const { name, latitude, longitude } = city;
     let valueArray = [name, latitude, longitude];
     return (
-      <option
-        value={valueArray}
-        name={name}
-        key={i}
-      >
+      <option value={valueArray} name={name} key={i}>
         {name}
       </option>
-    )
+    );
   });
 
   const handleRecentCityClick = (event) => {
-    let cityValues = (event.target.value).split(',')
+    let cityValues = event.target.value.split(",");
     let recentLat = cityValues[1];
     let recentLong = cityValues[2];
     handleCity(event.target.value);
-    handleDropdownLongLat(recentLat, recentLong)
-  }
+    handleDropdownLongLat(recentLat, recentLong);
+  };
 
   return (
     <section className="navigation-container">
@@ -51,18 +46,18 @@ const Navigation = (props) => {
           <Col lg={{ span: 12 }}>
             <form className="navigation-form">
               <Row>
-                <Col lg={{span: 3, offset: 0}}>
-                  <label className='dropdown-container'>
+                <Col lg={{ span: 3, offset: 0 }}>
+                  <label className="dropdown-container">
                     <select
                       name="city"
                       value={city}
                       onChange={handleRecentCityClick}
-                      default='Recently Searched'
-                      className='dropdown'
-                      // Ensures that the lat/lng input fields can be utilized by the map and dropdown/manual input
-                      // onClick={() => handleManualVsMapInput()}
+                      default="Recently Searched"
+                      className="dropdown"
                     >
-                      <option value={'Recently Searched'} key={0}>Recently Searched</option>
+                      <option value={"Recently Searched"} key={0}>
+                        Recently Searched
+                      </option>
                       {dropdownOptions}
                     </select>
                   </label>
@@ -90,16 +85,14 @@ const Navigation = (props) => {
                   />
                 </Col>
                 <Col lg={{ span: 3, offset: 0 }}>
-                  <div 
-                    className='cta-btn-container' 
+                  <div
+                    className="cta-btn-container"
                     onClick={(e) => {
-                      e.preventDefault()
-                      getWeatherData(currentLat, currentLong)
+                      e.preventDefault();
+                      getWeatherData(currentLat, currentLong);
                     }}
                   >
-                    <button className='cta-btn gold-btn'>
-                      Get Weather
-                    </button>
+                    <button className="cta-btn gold-btn">Get Weather</button>
                   </div>
                 </Col>
               </Row>
